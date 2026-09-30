@@ -32,7 +32,12 @@ html { scroll-padding-top: 94px; scroll-behavior: smooth; }
 body {
   margin: 0;
   color: var(--text);
-  background: var(--background);
+  /* 两层极淡的墨绿/暖金色光晕，保持纸面质感又有层次。 */
+  background:
+    radial-gradient(1100px 460px at 88% -8%, #edf2ea 0%, transparent 62%),
+    radial-gradient(900px 420px at -8% 6%, #f4ede0 0%, transparent 58%),
+    var(--background);
+  background-attachment: fixed;
   font: var(--body-size)/1.9 "Times New Roman", "Resume Serif SC", "Noto Serif SC", "Songti SC", SimSun, serif;
 }
 a { color: var(--accent); text-decoration: none; transition: color .2s ease; }
@@ -63,52 +68,57 @@ nav a.is-current { color: var(--heading); font-weight: 600; text-decoration: und
 .hero-top { display: flex; justify-content: space-between; align-items: center; gap: 32px; }
 h1 { font-size: 50px; font-weight: 600; color: var(--heading); letter-spacing: 2px; margin-bottom: 16px; }
 h1 span { font-size: 32px; font-weight: 400; letter-spacing: 0; color: var(--subheading); margin-left: 20px; }
-.hero-role { margin-bottom: 12px; font-size: 20px; }
+.hero-role { position: relative; margin-bottom: 12px; padding-left: 14px; font-size: 20px; }
+.hero-role::before { content: ""; position: absolute; left: 0; top: .35em; bottom: .35em; width: 3px; border-radius: 2px; background: linear-gradient(var(--gold), var(--accent)); }
 .hero-school { color: var(--muted); font-size: 18px; }
 .hero-visual { flex-shrink: 0; }
-.hero-visual figure { padding: 9px; border: 1px solid #d8ceb9; background: #fffefa; box-shadow: 0 12px 32px #3444390b; }
-.hero-visual img { display: block; width: 220px; height: 220px; object-fit: cover; }
-.research-direction { margin-top: 30px; }
+.hero-visual figure { padding: 9px; border: 1px solid #d8ceb9; border-radius: 16px; background: linear-gradient(135deg, #fffefa, #f3ede0); box-shadow: 0 20px 44px #34443916; }
+.hero-visual img { display: block; width: 220px; height: 220px; object-fit: cover; border-radius: 9px; }
+.research-direction { margin-top: 30px; padding: 18px 22px; border: 1px solid var(--card-line); border-left: 3px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0; background: linear-gradient(90deg, #f6f2e8, #fffdf6); box-shadow: var(--shadow-sm); }
 .research-direction > span { font-size: 20px; font-weight: 600; color: var(--subheading); }
 .research-direction p { margin-top: 8px; font-size: var(--body-size); }
 .research-direction strong { font-weight: 600; color: var(--heading); }
 .profile-details { display: grid; grid-template-columns: 1fr 1.15fr 1.1fr 1.4fr; gap: 28px; margin-top: 22px; }
 .profile-details > div > span { color: var(--subheading); font-size: 15px; }
 .profile-details p { margin-top: 7px; font-size: 16px; }
+.profile-details > div { padding: 13px 18px 15px; border: 1px solid var(--card-line); border-radius: 10px; background: #fffef9; box-shadow: var(--shadow-sm); transition: transform .25s ease, box-shadow .25s ease; }
+.profile-details > div:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .profile-details a { overflow-wrap: anywhere; }
 .birth-date { white-space: nowrap; }
 
 /* 4. 正文平铺：主栏目保留浅底，科研子项目用纯文字、字重和间距分层。 */
 .section { border-top: 1px solid var(--line); padding: 42px 0 46px; }
 .section-heading { margin-bottom: 26px; }
-.section-heading h2 { display: inline-block; padding: 6px 20px 8px; border-left: 3px solid var(--gold); background: var(--heading-wash); border-radius: 0 4px 4px 0; }
-.experience-item { margin-bottom: 26px; }
+.section-heading h2 { display: inline-block; padding: 6px 20px 8px; border-left: 3px solid var(--gold); background: linear-gradient(90deg, var(--heading-wash), #f6f8f3); border-radius: 0 8px 8px 0; box-shadow: var(--shadow-sm); }
+.experience-item { margin-bottom: 18px; padding: 18px 22px; border: 1px solid var(--card-line); border-radius: var(--radius); background: var(--card-bg); box-shadow: var(--shadow-sm); transition: transform .25s ease, box-shadow .25s ease; }
 .experience-item:last-child { margin-bottom: 0; }
+.experience-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .experience-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; }
 .experience-heading strong { font-size: var(--body-size); font-weight: 600; color: #465951; }
 .experience-heading time { flex-shrink: 0; color: var(--muted); font-size: 16px; font-variant-numeric: tabular-nums; }
 .experience-detail { margin-top: 8px; color: var(--text); font-size: var(--body-size); }
-.research-item { margin-bottom: 28px; }
+.research-item { margin-bottom: 18px; padding: 18px 22px; border: 1px solid var(--card-line); border-radius: var(--radius); background: var(--card-bg); box-shadow: var(--shadow-sm); transition: transform .25s ease, box-shadow .25s ease; }
 .research-item:last-child { margin-bottom: 0; }
+.research-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .research-item h3 { font-size: 20px; line-height: 1.9; }
 .research-item time { font-size: 16px; font-weight: 400; color: var(--muted); margin-right: 16px; }
 .research-item p { font-size: var(--body-size); margin-top: 8px; line-height: 1.95; }
 .skills-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.skills-list li { font-size: var(--body-size); }
+.skills-list li { padding: 18px 20px; font-size: var(--body-size); border: 1px solid var(--card-line); border-top: 3px solid var(--gold); border-radius: var(--radius); background: var(--card-bg); box-shadow: var(--shadow-sm); transition: transform .25s ease, box-shadow .25s ease; }
+.skills-list li:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 .skills-list strong { display: block; margin-bottom: 8px; font-weight: 600; color: var(--subheading); }
-.skills-list li { padding-top: 15px; border-top: 1px solid #c8baa2; }
 /* 作品图像是实际网站截图。Grid 管布局，CSS 过渡负责轻微悬停效果。 */
 #portfolio { background: #f4f2eb; }
 .portfolio-list { padding: 0; margin: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
 .work-card { min-width: 0; }
-.work-card > a { display: block; height: 100%; border: 1px solid #ddd8cb; border-radius: 6px; overflow: hidden; background: #fffdf8; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
-.work-card > a:hover { text-decoration: none; transform: translateY(-4px); border-color: #b7a88d; box-shadow: 0 14px 30px #34433810; }
+.work-card > a { display: block; height: 100%; border: 1px solid #ddd8cb; border-radius: var(--radius); overflow: hidden; background: #fffdf8; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+.work-card > a:hover { text-decoration: none; transform: translateY(-4px); border-color: #b7a88d; box-shadow: var(--shadow-md); }
 .work-card > a:focus-visible { outline-offset: 5px; }
 .work-cover { background: #e5e0d1; padding: 24px; overflow: hidden; }
 .work-community .work-cover { background: #dbe5dc; }
 .work-greeting-card .work-cover { background: #ece0d9; }
 .work-music-station .work-cover { background: #dfe3e7; }
-.work-cover img { display: block; width: 100%; height: auto; aspect-ratio: 1.65; object-fit: cover; object-position: top; border: 1px solid #ffffffb3; border-radius: 3px; box-shadow: 0 8px 20px #2b393614; transition: transform .4s ease; }
+.work-cover img { display: block; width: 100%; height: auto; aspect-ratio: 1.65; object-fit: cover; object-position: top; border: 1px solid #ffffffb3; border-radius: 6px; box-shadow: 0 8px 20px #2b393614; transition: transform .4s ease; }
 .work-card > a:hover img { transform: scale(1.018); }
 .work-copy { position: relative; padding: 19px 26px 22px; }
 .work-copy h3 { color: var(--heading); font-size: 22px; padding-right: 28px; }
@@ -127,7 +137,7 @@ h1 span { font-size: 32px; font-weight: 400; letter-spacing: 0; color: var(--sub
 .references li { padding-left: 7px; margin-bottom: 17px; font-size: var(--body-size); line-height: 1.9; overflow-wrap: anywhere; }
 .references li::marker { color: var(--muted); font-size: 16px; }
 .references strong { font-weight: 600; color: var(--heading); }
-footer { border-top: 1px solid var(--line); padding: 25px 0; }
+footer { border-top: 1px solid var(--line); padding: 25px 0; background: #f4f2eb; }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 25px; }
 .footer-name { font-size: 20px; }
 .footer-name > span { font-size: 17px; margin-left: 8px; color: var(--muted); }
@@ -179,6 +189,10 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; }
   .research-item p { font-size: var(--body-size); }
   .skills-list { grid-template-columns: 1fr; gap: 14px; }
   .skills-list strong { margin-bottom: 2px; }
+  /* 小屏下卡片内边距收紧，避免内容被挤窄。 */
+  .profile-details > div, .experience-item,
+  .research-item, .skills-list li, .research-direction { padding: 13px 15px; }
+  body { background-attachment: scroll; }
   .portfolio-list { grid-template-columns: 1fr; gap: 22px; }
   .work-cover { padding: 18px; }
   .work-copy { padding: 16px 18px 19px; }
@@ -193,7 +207,9 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *:before, *:after { transition: none !important; animation: none !important; }
-  .work-card > a:hover, .work-card > a:hover img { transform: none; }
+  .work-card > a:hover, .work-card > a:hover img,
+  .profile-details > div:hover, .experience-item:hover,
+  .research-item:hover, .skills-list li:hover { transform: none; }
 }
 @media print {
   .site-header, .skip-link, .back-top { display: none; }
@@ -206,7 +222,9 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; }
   #portfolio { background: none; }
   .work-card { break-inside: avoid; }
   .work-cover { padding: 8px; }
-  .work-card > a, .hero-visual figure { box-shadow: none; }
+  .work-card > a, .hero-visual figure, .experience-item,
+  .research-item, .skills-list li, .profile-details > div,
+  .research-direction { box-shadow: none; }
 }
 
 .works-notice { font-size: 15px; color: var(--muted); margin-top: 10px; }
