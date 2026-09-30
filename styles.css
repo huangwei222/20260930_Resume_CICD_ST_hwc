@@ -26,6 +26,12 @@
   --title-size: 32px;
   --line: #e1ddd3;
   --background: #fbfaf6;
+  /* 统一的卡片、圆角与阴影 token，全站只引用这一处。 */
+  --card-bg: #fffdf8;
+  --card-line: #e7e2d5;
+  --radius: 12px;
+  --shadow-sm: 0 4px 14px #3444390a;
+  --shadow-md: 0 16px 34px #34433816;
 }
 * { box-sizing: border-box; }
 html { scroll-padding-top: 94px; scroll-behavior: smooth; }
@@ -53,7 +59,7 @@ h3 { font-size: 22px; font-weight: 600; color: var(--subheading); }
 .skip-link:focus { top: 12px; }
 
 /* 2. 顶部只保留姓名和普通锚点导航。 */
-.site-header { position: sticky; top: 0; z-index: 10; background: #fbfaf6f5; backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.site-header { position: sticky; top: 0; z-index: 10; background: #fbfaf6f5; backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); box-shadow: 0 8px 24px #3444390a; }
 .header-inner { display: flex; justify-content: space-between; align-items: center; gap: 30px; min-height: 70px; }
 .brand { font-size: 24px; font-weight: 600; color: var(--text); white-space: nowrap; }
 .brand span { font-size: 14px; font-weight: 400; letter-spacing: 1px; margin-left: 12px; color: var(--muted); }
